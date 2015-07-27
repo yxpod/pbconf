@@ -12,7 +12,7 @@ var (
 	msg = flag.String("msg", "PBConf", "pb top message name")
 	pkg = flag.String("pkg", "pbconf", "pb package name")
 	f   = flag.String("f", "pbconf.proto", ".proto output file")
-	o   = flag.String("o", "pbonf.pb", "encoded tables output file")
+	o   = flag.String("o", "pbconf.pb", "encoded tables output file")
 )
 
 func main() {
