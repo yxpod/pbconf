@@ -33,7 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	ff, err := os.OpenFile(*f, os.O_CREATE, 0666)
+	ff, err := os.OpenFile(*f, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
@@ -41,7 +41,7 @@ func main() {
 	defer ff.Close()
 	conf.WriteProto(ff, *pkg, *msg)
 
-	of, err := os.OpenFile(*o, os.O_CREATE, 0666)
+	of, err := os.OpenFile(*o, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
