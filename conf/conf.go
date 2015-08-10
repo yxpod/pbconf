@@ -56,3 +56,10 @@ func (c PBConf) WriteData(w io.Writer) {
 		w.Write(t.Encode(i + 1))
 	}
 }
+
+func (c PBConf) WriteText(w io.Writer) {
+	for _, t := range c {
+		t.WriteText(w)
+		w.Write([]byte("\n"))
+	}
+}

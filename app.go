@@ -13,6 +13,7 @@ var (
 	pkg = flag.String("pkg", "pbconf", "pb package name")
 	f   = flag.String("f", "pbconf.proto", ".proto output file")
 	o   = flag.String("o", "pbconf.pb", "encoded tables output file")
+	t   = flag.String("t", "pbconf.txt", "text output file")
 )
 
 func main() {
@@ -48,4 +49,12 @@ func main() {
 	}
 	defer of.Close()
 	conf.WriteData(of)
+
+	tf, err := os.OpenFile(*t, os.O_CREATE|os.O_RDWR, 0666)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		os.Exit(1)
+	}
+	defer tf.Close()
+	conf.WriteText(tf)
 }

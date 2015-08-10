@@ -163,3 +163,18 @@ func (t *Table) Encode(n int) []byte {
 	}
 	return b
 }
+
+func (t *Table) WriteText(w io.Writer) {
+	var buf bytes.Buffer
+	buf.WriteString(fmt.Sprintf("%v: %v\n", t.Title, strings.Join(t.Types, ",")))
+	buf.WriteString(fmt.Sprintf("%v: %v\n", t.Title, strings.Join(t.Names, ",")))
+	for i, d := range t.Datas {
+		var s []string
+		for _, v := range d {
+			s = append(s, fmt.Sprintf("%v", v))
+		}
+		buf.WriteString(fmt.Sprintf("%v[%v]: %v\n", t.Title, i, strings.Join(s, ",")))
+	}
+
+	w.Write(buf.Bytes())
+}
