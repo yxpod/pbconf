@@ -18,7 +18,7 @@ var (
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintln(os.Stderr, "Usage: pbconf [-msg msg] [-pkg pkg] [-f file] [-o file] table-path")
+		fmt.Fprintln(os.Stderr, "Usage: pbconf [-msg msg] [-pkg pkg] [-f file] [-o file] [-t file] table-path")
 		flag.PrintDefaults()
 	}
 	flag.Parse()
